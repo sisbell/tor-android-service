@@ -2,7 +2,6 @@
 <resources>
   <string name="btn_cancel">રદ કરો</string>
   <!--Welcome Wizard strings (DJH)-->
-  <string name="wizard_proxy_help_info">પ્રોક્સી ગોઠવણીઓ</string>
   <!--END Welcome Wizard strings (DJH)-->
   <!--New Wizard Strings-->
   <!--Title Screen-->
@@ -10,5 +9,4 @@
   <!--Permissions screen-->
   <!--TipsAndTricks screen-->
   <!--Transparent Proxy screen-->
-  <string name="default_bridges"></string>
 </resources>
