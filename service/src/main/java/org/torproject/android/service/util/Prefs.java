@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 
 import java.util.Locale;
 
+import static org.torproject.android.service.TorServiceConstants.PREF_BINARY_TOR_VERSION_INSTALLED;
+
 public class Prefs {
 
     private final static String PREF_BRIDGES_ENABLED = "pref_bridges_enabled";
@@ -107,5 +109,9 @@ public class Prefs {
     public static void setExitNodes (String exits)
     {
     	putString(PREF_EXIT_NODES,exits);
+    }
+
+    public static void setInstalledTorVersion(String version) {
+        putString(PREF_BINARY_TOR_VERSION_INSTALLED, version);
     }
 }

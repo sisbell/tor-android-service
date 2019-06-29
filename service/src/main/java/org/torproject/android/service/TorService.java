@@ -25,13 +25,12 @@ import org.torproject.android.service.util.TorServiceUtils;
 import org.torproject.android.service.vpn.TorVpnService;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public final class TorService extends Service implements TorServiceConstants, OrbotConstants {
 
-    public final static String TOR_VERSION = "0.3.5.8-rc-openssl1.0.2p";
+    public final static String BINARY_TOR_VERSION = "0.3.5.8-rc-openssl1.0.2p";
     private static final int NOTIFY_ID = 1;
     private static final int ERROR_NOTIFY_ID = 3;
     private final static String NOTIFICATION_CHANNEL_ID = "orbot_channel_1";
@@ -290,6 +289,7 @@ public final class TorService extends Service implements TorServiceConstants, Or
     private boolean setupTor() {
         try {
             onionProxyManager.setup();
+            Prefs.setInstalledTorVersion(BINARY_TOR_VERSION);
             return true;
         } catch (Exception e) {
             Log.e(OrbotConstants.TAG, "Error installing Tor binaries", e);
@@ -307,7 +307,7 @@ public final class TorService extends Service implements TorServiceConstants, Or
         } else {
             try {
                 updateTorrcConfig();
-                mEventBroadcaster.broadcastNotice("checking binary version: " + TOR_VERSION);
+                mEventBroadcaster.broadcastNotice("checking binary version: " + BINARY_TOR_VERSION);
                 mEventBroadcaster.getStatus().starting();
                 notify(getString(R.string.status_starting_up), NOTIFY_ID,
                         R.drawable.ic_stat_tor);
