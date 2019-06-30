@@ -1,49 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">Tor Browser</string>
+  <string name="app_name">Orbot</string>
   <string name="app_description">Orbot on ilmainen välityspalvelinsovellus, joka tarjoaa muille sovelluksille mahdollisuuden käyttää internetiä turvallisemmin. Orbot käyttää Toria kryptaamaan verkkoliikenteesi ja sitten piilottaa sen kierrättämällä sitä usean tietokoneen kautta ympäri maailman. Tor on vapaa ohjelmisto ja avoin verkosto, jotka auttavat puolustautumaan vapautta ja yksityisyyttä uhkaavalta verkkovalvonnalta ja valtioiden verkonseurannalta sekä suojaamaan salaisia liiketoimintoja ja -yhteyksiä.</string>
-  <string name="status_starting_up">Orbot käynnistyy...</string>
+    <string name="status_starting_up">Orbot käynnistyy...</string>
   <string name="status_activated">Yhdistetty Tor-verkkoon</string>
   <string name="status_disabled">Orbot on poistettu käytöstä</string>
   <string name="tor_process_starting">Käynnistetään Tor-ohjelmaa...</string>
   <string name="tor_process_complete">valmis.</string>
-  <string name="menu_settings">Asetukset</string>
-  <string name="menu_start">Aloita</string>
-  <string name="menu_stop">Lopeta</string>
-  <string name="button_about">Tietoa</string>
-  <string name="btn_okay">Selvä</string>
-  <string name="btn_cancel">Peruuta</string>
-  <!--Welcome Wizard strings (DJH)-->
-  <!--END Welcome Wizard strings (DJH)-->
-  <!--New Wizard Strings-->
+    <!--Welcome Wizard strings (DJH)-->
+    <!--END Welcome Wizard strings (DJH)-->
+    <!--New Wizard Strings-->
   <!--Title Screen-->
-  <!--Warning screen-->
-  <!--Permissions screen-->
-  <!--TipsAndTricks screen-->
-  <!--Transparent Proxy screen-->
-  <string name="error">Virhe</string>
-  <string name="bridges">Sillat</string>
-  <string name="hidden_service_request">Sovellus haluaa avata piilopalveluportin %S Tor-verkkoon. Tämä on turvallista, jos luotat sovellukseen.</string>
-  <string name="found_existing_tor_process">löytyi olemassaoleva Tor-prosessi...</string>
+    <!--Warning screen-->
+    <!--Permissions screen-->
+    <!--TipsAndTricks screen-->
+    <!--Transparent Proxy screen-->
+    <string name="couldn_t_start_tor_process_">Tor-prosessin käynnistäminen epäonnistui:</string>
+    <string name="your_reachableaddresses_settings_caused_an_exception_">ReachableAccess-asetuksesi aiheuttivat virheen!</string>
+  <string name="your_relay_settings_caused_an_exception_">Releasetuksesi aiheuttivat virheen!</string>
+    <string name="found_existing_tor_process">löytyi olemassaoleva Tor-prosessi...</string>
   <string name="something_bad_happened">Jotain pahaa tapahtui. Tarkista loki</string>
-  <string name="unable_to_read_hidden_service_name">piilopalvelunimen lukeminen epäonnistui</string>
+    <string name="unable_to_read_hidden_service_name">piilopalvelunimen lukeminen epäonnistui</string>
   <string name="unable_to_start_tor">Torin käynnistys epäonnistui:</string>
-  <string name="no_internet_connection_tor">Ei internet-yhteyttä; Tor on valmiustilassa...</string>
-  <string name="newnym">Vaihdoit Tor-identiteettisi uuteen!</string>
-  <string name="install_apps_">Asennetaanko sovelluksia?</string>
-  <string name="no_network_connectivity_putting_tor_to_sleep_">Ei verkkoyhteyttä. Tor siirtyy valmiustilaan...</string>
+    <string name="no_internet_connection_tor">Ei internet-yhteyttä; Tor on valmiustilassa...</string>
+    <string name="newnym">Vaihdoit Tor-identiteettisi uuteen!</string>
+    <string name="no_network_connectivity_putting_tor_to_sleep_">Ei verkkoyhteyttä. Tor siirtyy valmiustilaan...</string>
   <string name="network_connectivity_is_good_waking_tor_up_">Verkkoyhteys toimii. Herätetään Tor...</string>
   <string name="updating_settings_in_tor_service">päivitetään Tor-palvelun asetuksia</string>
-  <string name="kbps">kbps</string>
-  <string name="mbps">Mbps</string>
-  <string name="kb">kt</string>
-  <string name="mb">Mt</string>
-  <string name="bridges_updated">Sillat päivitetty</string>
-  <string name="restart_orbot_to_use_this_bridge_">Käynnistä Orbot uudelleen ottaaksesi muutokset käyttöön</string>
-  <string name="bridge_mode">Siltatila</string>
-  <string name="get_bridges_email">Sähköposti</string>
-  <string name="get_bridges_web">Verkkosivu</string>
-  <string name="activate">Ota käyttöön</string>
-  <string name="send_email">Lähetä sähköpostia</string>
-  <string name="you_must_get_a_bridge_address_by_email_web_or_from_a_friend_once_you_have_this_address_please_paste_it_into_the_bridges_preference_in_orbot_s_setting_and_restart_">Voit saada sillan osoitteen sähköpostin kautta, verkkosivulta tai skannaamalla sillan QR-koodin. Valitse \'Sähköposti\' tai \'Verkkosivu\' alta pyytääksesi sillan osoitetta.\n\nKun sinulla on osoite, kopioi &amp; liitä se \"Sillat\" -kohtaan Orbotin asetuksissa ja käynnistä uudelleen.</string>
 </resources>

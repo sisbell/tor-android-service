@@ -1,54 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">Tor Browser</string>
+  <string name="app_name">Orbot</string>
   <string name="app_description">Orbot - это свободная программа для прокси-соединений, она позволяет другим приложениям более безопасно использовать интернет-соединение. Orbot использует Tor для шифрования интернет-трафика, который затем скрывается в ходе пересылки через несколько компьютеров в разных частях планеты. Tor является свободным программным приложением, а также открытой сетью, помогающей защититься от слежки в сетях, угрожающей личной свободе и частной жизни, конфиденциальным бизнес-деятельности и контактам, а также государственной программе безопасности, известной как анализ трафика.</string>
-  <string name="status_starting_up">Запуск Orbot...</string>
+    <string name="status_starting_up">Запуск Orbot...</string>
   <string name="status_activated">Подключён к сети Tor</string>
   <string name="status_disabled">Orbot отключён</string>
   <string name="status_shutting_down">Служба Tor выключается</string>
   <string name="tor_process_starting">Запускается клиент Tor...</string>
   <string name="tor_process_complete">завершено.</string>
-  <string name="menu_settings">Настройки</string>
-  <string name="menu_start">Запустить</string>
-  <string name="menu_stop">Остановить</string>
-  <string name="button_about">О программе</string>
-  <string name="btn_okay">OK</string>
-  <string name="btn_cancel">Отмена</string>
-  <!--Welcome Wizard strings (DJH)-->
-  <!--END Welcome Wizard strings (DJH)-->
-  <!--New Wizard Strings-->
+    <!--Welcome Wizard strings (DJH)-->
+    <!--END Welcome Wizard strings (DJH)-->
+    <!--New Wizard Strings-->
   <!--Title Screen-->
-  <!--Warning screen-->
-  <!--Permissions screen-->
-  <!--TipsAndTricks screen-->
-  <!--Transparent Proxy screen-->
-  <string name="error">Ошибка</string>
-  <string name="bridges">Мосты</string>
-  <string name="hidden_service_request">Приложение хочет открыть скрытый порт сервера %S сети Tor. Это безопасно, если вы доверяете данному приложению.</string>
-  <string name="found_existing_tor_process">найден существующий процесс Tor...</string>
+    <!--Warning screen-->
+    <!--Permissions screen-->
+    <!--TipsAndTricks screen-->
+    <!--Transparent Proxy screen-->
+    <string name="couldn_t_start_tor_process_">Невозможно запустить Tor: </string>
+    <string name="your_reachableaddresses_settings_caused_an_exception_">Ваши настройки доступных адресов вызвали исключение!</string>
+  <string name="your_relay_settings_caused_an_exception_">Настройки вашего ретранслятора вызвали исключение!</string>
+    <string name="found_existing_tor_process">найден существующий процесс Tor...</string>
   <string name="something_bad_happened">Произошла какая-то ошибка. Проверьте журнал.</string>
-  <string name="unable_to_read_hidden_service_name">невозможно прочитать имя скрытой службы</string>
+    <string name="unable_to_read_hidden_service_name">невозможно прочитать имя скрытой службы</string>
   <string name="unable_to_start_tor">Невозможно запустить Tor:</string>
-  <string name="no_internet_connection_tor">Отсутствует подключение к интернету, Tor находится в режиме ожидания…</string>
-  <string name="newnym">Вы переключились на новый идентификатор Tor!</string>
-  <string name="it_doesn_t_seem_like_you_have_orweb_installed_want_help_with_that_or_should_we_just_open_the_browser_">Не похоже, что у вас установлен Orfox. Хотите справку на эту тему или просто открыть браузер?</string>
-  <string name="install_apps_">Установить приложения?</string>
-  <string name="no_network_connectivity_putting_tor_to_sleep_">Нет подключения к сети. Tor входит в режим сна...</string>
+    <string name="no_internet_connection_tor">Отсутствует подключение к интернету, Tor находится в режиме ожидания…</string>
+    <string name="newnym">Вы переключились на новый идентификатор Tor!</string>
+    <string name="no_network_connectivity_putting_tor_to_sleep_">Нет подключения к сети. Tor входит в режим сна...</string>
   <string name="network_connectivity_is_good_waking_tor_up_">Подключение к сети установлено. Tor просыпается...</string>
   <string name="updating_settings_in_tor_service">обновление настроек в сервисе Tor</string>
-  <string name="kbps">кбит/с</string>
-  <string name="mbps">мбит/с</string>
-  <string name="kb">КБ</string>
-  <string name="mb">МБ</string>
-  <string name="bridges_updated">Мосты обновлены</string>
-  <string name="restart_orbot_to_use_this_bridge_">Пожалуйста, перезапустите Orbot для вступления изменения в силу</string>
-  <string name="bridge_mode">Режим моста</string>
-  <string name="get_bridges_email">Эл. почта</string>
-  <string name="get_bridges_web">Сайт</string>
-  <string name="activate">Активация</string>
-  <string name="apps_mode">VPN-режим приложений</string>
-  <string name="send_email">Отправить письмо</string>
-  <string name="you_must_get_a_bridge_address_by_email_web_or_from_a_friend_once_you_have_this_address_please_paste_it_into_the_bridges_preference_in_orbot_s_setting_and_restart_">Вы можете получить адрес моста по электронной почте, с сайта или путём сканирования QR-кода. Выберите \"Эл. почта\" или \"Сайт\" ниже, чтобы запросить адрес моста.\n\nПолученный адрес скопируйте и вставьте его в разделе настроек Orbot \"Мосты\", после чего перезапустите приложение.</string>
-  <string name="install_orweb">Установить Orfox</string>
-  <string name="vpn_default_world">Мир</string>
 </resources>

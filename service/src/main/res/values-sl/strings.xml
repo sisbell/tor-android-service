@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">Tor Browser</string>
-  <string name="status_starting_up">Orbot se zaganja...</string>
+  <string name="app_name">Orbot</string>
+    <string name="status_starting_up">Orbot se zaganja...</string>
   <string name="status_activated">Povezan v omrežje Tor</string>
   <string name="status_disabled">Orbot ni aktiviran</string>
   <string name="tor_process_starting">Zagon Tor klijenta...</string>
   <string name="tor_process_complete">končano.</string>
-  <string name="menu_settings">Nastavitve</string>
-  <string name="menu_start">Začni</string>
-  <string name="menu_stop">Ustavi</string>
-  <string name="button_about">O programu</string>
-  <string name="btn_okay">Potrdi</string>
-  <string name="btn_cancel">Prekini</string>
-  <!--Welcome Wizard strings (DJH)-->
-  <!--END Welcome Wizard strings (DJH)-->
-  <!--New Wizard Strings-->
+    <!--Welcome Wizard strings (DJH)-->
+    <!--END Welcome Wizard strings (DJH)-->
+    <!--New Wizard Strings-->
   <!--Title Screen-->
   <!--Warning screen-->
-  <!--Permissions screen-->
-  <!--TipsAndTricks screen-->
+    <!--Permissions screen-->
+    <!--TipsAndTricks screen-->
   <!--Transparent Proxy screen-->
 </resources>

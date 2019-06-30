@@ -2,38 +2,30 @@
 <resources>
   <string name="app_name">اوربوت</string>
   <string name="app_description">اوربوت هو تطبيق الوكيل-البروكسي الحر الذي يمكّن تطبيقات أخرى لاستخدام الإنترنت بأمان أكثر . يُستخدم اوربوت تور لتشفير تحركات مرورك على الإنترنت ، ثم يخفيك ويجعلك وهمي من خلال سلسلة من أجهزة الكمبيوتر في جميع أنحاء العالم . تور هو تطبيق حر وشبكة مفتوحة والتي تساعدك على حماية نفسك من مراقبة الشبكات التي تهدد الحرية الشخصية والخصوصية ، والأنشطة التجارية السرية والعلاقات ، وأمن الدولة والحكومات القمعيّة والتي تستخدم مايعرف باسم تحليل حركة مرور البيانات .</string>
-  <string name="status_starting_up">جاري تشغيل اوربوت...</string>
+    <string name="status_starting_up">جاري تشغيل اوربوت...</string>
   <string name="status_activated">متصل بشبكة تور</string>
   <string name="status_disabled">تم إيقاف اوربوت</string>
   <string name="status_shutting_down">جاري ايقاف خدمة تور</string>
   <string name="tor_process_starting">جاري تشغيل تور...</string>
   <string name="tor_process_complete">كامل.</string>
-  <string name="menu_settings">إعدادات</string>
-  <string name="menu_start">بدء</string>
-  <string name="menu_stop">توقف</string>
-  <string name="button_about">حول</string>
-  <string name="btn_okay">موافق</string>
-  <string name="btn_cancel">إلغاء</string>
-  <!--Welcome Wizard strings (DJH)-->
-  <!--END Welcome Wizard strings (DJH)-->
-  <!--New Wizard Strings-->
+    <!--Welcome Wizard strings (DJH)-->
+    <!--END Welcome Wizard strings (DJH)-->
+    <!--New Wizard Strings-->
   <!--Title Screen-->
-  <!--Warning screen-->
-  <!--Permissions screen-->
-  <!--TipsAndTricks screen-->
-  <!--Transparent Proxy screen-->
-  <string name="error">خطأ</string>
-  <string name="bridges">الجسور</string>
-  <string name="hidden_service_request">هناك برنامج يحاول فتح منفذ لخادم مخفي %S إلي شبكة تور. هذا السلوك آمن إذا كنت تثق بهذا البرنامج.</string>
-  <string name="found_existing_tor_process">عُثر علي عملية تور سابقة تعمل...</string>
+    <!--Warning screen-->
+    <!--Permissions screen-->
+    <!--TipsAndTricks screen-->
+    <!--Transparent Proxy screen-->
+    <string name="couldn_t_start_tor_process_">لقد تعذر بدء تشغيل تور:</string>
+    <string name="your_reachableaddresses_settings_caused_an_exception_">إعدادات العنوان القابل للاتصال لديك تسببت بخطأ!</string>
+  <string name="your_relay_settings_caused_an_exception_">إعدادات المرحلات لديك تسببت بخطأ!</string>
+    <string name="found_existing_tor_process">عُثر علي عملية تور سابقة تعمل...</string>
   <string name="something_bad_happened">حصل خطأ ما. افحص السجل</string>
-  <string name="unable_to_read_hidden_service_name">غير قادر على قراءة اسم الخدمة المخفية</string>
+    <string name="unable_to_read_hidden_service_name">غير قادر على قراءة اسم الخدمة المخفية</string>
   <string name="unable_to_start_tor">غير قادر على بدء تور:</string>
-  <string name="no_internet_connection_tor">لا يوجد ارتباط بألانترنيت: تور في وضع الوقف المؤقت</string>
-  <string name="newnym">لقد تحولت الى هوية تور جديدة</string>
-  <string name="it_doesn_t_seem_like_you_have_orweb_installed_want_help_with_that_or_should_we_just_open_the_browser_">لا يبدو بأن لديك اورفوكس منصباً. هل تريد مساعدتاً في ذلك او لنقم فقط بتشغيل المتصفح؟</string>
-  <string name="install_apps_">هل ترغب بتنصيب التطبيقات؟</string>
-  <string name="no_network_connectivity_putting_tor_to_sleep_">لا يوجد اتصال بألشبكة. سيدخل تور الى وضع النوم</string>
+    <string name="no_internet_connection_tor">لا يوجد ارتباط بألانترنيت: تور في وضع الوقف المؤقت</string>
+    <string name="newnym">لقد تحولت الى هوية تور جديدة</string>
+    <string name="no_network_connectivity_putting_tor_to_sleep_">لا يوجد اتصال بألشبكة. سيدخل تور الى وضع النوم</string>
   <string name="network_connectivity_is_good_waking_tor_up_">الاتصال بألشبكة جيد. تنبيه تور من النوم</string>
   <string name="updating_settings_in_tor_service">تحديث الاعدادات في خدمات تور</string>
 </resources>
