@@ -12,7 +12,6 @@ public interface TorServiceConstants {
     String BROWSER_APP_USERNAME = "org.torproject.torbrowser";
 
     String DIRECTORY_TOR_BINARY = "bin";
-    String SHELL_CMD_PS = "toolbox ps";
     int TOR_TRANSPROXY_PORT_DEFAULT = 9140;
 
     int TOR_DNS_PORT_DEFAULT = 5400;
@@ -58,7 +57,7 @@ public interface TorServiceConstants {
     String LOCAL_ACTION_LOG = "log";
     String LOCAL_ACTION_BANDWIDTH = "bandwidth";
     String LOCAL_EXTRA_LOG = "log";
-
+    String LOCAL_ACTION_PORTS = "ports";
     /**
      * All tor-related services and daemons are stopped
      */

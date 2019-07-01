@@ -20,5 +20,6 @@ allprojects {
         mavenCentral()
         maven { url "https://repo.spring.io/plugins-release" }
         maven { url "https://raw.githubusercontent.com/guardianproject/gpmaven/master" }
+        maven { url 'https://jitpack.io' }
     }
 }

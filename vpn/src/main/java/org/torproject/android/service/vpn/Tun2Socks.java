@@ -8,42 +8,29 @@ package org.torproject.android.service.vpn;
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *
+ * 
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *
+ * 
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
 
 import java.net.DatagramSocket;
 import java.net.Socket;
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
-public class Tun2Socks {
+public class Tun2Socks
+{
 
-    static {
+    static{
         System.loadLibrary("tun2socks");
     }
-
-    private static final String TAG = Tun2Socks.class.getSimpleName();
-    private static final boolean LOGD = true;
-
-    private static ParcelFileDescriptor mVpnInterfaceFileDescriptor;
-    private static int mVpnInterfaceMTU;
-    private static String mVpnIpAddress;
-    private static String mVpnNetMask;
-    private static String mSocksServerAddress;
-    private static String mUdpgwServerAddress;
-    private static boolean mUdpgwTransparentDNS;
 
     public static interface IProtectSocket
     {
@@ -51,12 +38,23 @@ public class Tun2Socks {
         boolean doVpnProtect(DatagramSocket socket);
     };
 
+    private static final String TAG = Tun2Socks.class.getSimpleName();
+    private static final boolean LOGD = true;
+
+    private static Thread mThread;
+    private static ParcelFileDescriptor mVpnInterfaceFileDescriptor;
+    private static int mVpnInterfaceMTU;
+    private static String mVpnIpAddress;
+    private static String mVpnNetMask;
+    private static String mSocksServerAddress;
+    private static String mUdpgwServerAddress;
+    private static boolean mUdpgwTransparentDNS;
+    
     // Note: this class isn't a singleton, but you can't run more
     // than one instance due to the use of global state (the lwip
     // module, etc.) in the native code.
 
-    public static void init() {
-    }
+    public static void init () {}
 
     public static void Start(
             ParcelFileDescriptor vpnInterfaceFileDescriptor,
@@ -65,7 +63,8 @@ public class Tun2Socks {
             String vpnNetMask,
             String socksServerAddress,
             String udpgwServerAddress,
-            boolean udpgwTransparentDNS) {
+            boolean udpgwTransparentDNS)
+    {
 
         mVpnInterfaceFileDescriptor = vpnInterfaceFileDescriptor;
         mVpnInterfaceMTU = vpnInterfaceMTU;
@@ -85,19 +84,28 @@ public class Tun2Socks {
                     mUdpgwServerAddress,
                     mUdpgwTransparentDNS ? 1 : 0);
     }
-
-    public static void Stop() {
+    
+    public static void Stop()
+    {
+       
         terminateTun2Socks();
+    
     }
 
     public static void logTun2Socks(
             String level,
             String channel,
-            String msg) {
-        String logMsg = String.format("%s(%s): %s", level, channel, msg);
-        if (level.equals("ERROR")) {
+            String msg)
+    {
+        String logMsg = level + "(" + channel + "): " + msg;
+        if (0 == level.compareTo("ERROR"))
+        {
             Log.e(TAG, logMsg);
-        } else if (LOGD) Log.d(TAG, logMsg);
+        }
+        else
+        {
+            if (LOGD) Log.d(TAG, logMsg);
+        }
     }
 
     private native static int runTun2Socks(
@@ -110,5 +118,5 @@ public class Tun2Socks {
             int udpgwTransparentDNS);
 
     private native static void terminateTun2Socks();
-
+    
 }
