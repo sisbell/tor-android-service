@@ -1,2 +1,2 @@
 include ':vpn'
-include 'service', 'jsocksAndroid'
+include 'service'
