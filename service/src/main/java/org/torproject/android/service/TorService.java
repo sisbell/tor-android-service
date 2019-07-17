@@ -22,7 +22,6 @@ import com.msopentech.thali.toronionproxy.TorInstaller;
 import org.torproject.android.service.util.NotificationBuilderCompat;
 import org.torproject.android.service.util.Prefs;
 import org.torproject.android.service.util.TorServiceUtils;
-import org.torproject.android.service.vpn.TorVpnService;
 
 import java.io.File;
 import java.util.concurrent.ExecutorService;
@@ -46,6 +45,7 @@ public final class TorService extends Service implements TorServiceConstants, Or
     private NotificationManager mNotificationManager;
     private boolean mNotificationShowing = false;
     private NotificationBuilderCompat mNotifyBuilder;
+    private static final String vpnServiceName = "org.torproject.android.service.vpn.TorVpnService";
 
     private final BroadcastReceiver mNetworkStateReceiver = new BroadcastReceiver() {
         @Override
@@ -90,8 +90,8 @@ public final class TorService extends Service implements TorServiceConstants, Or
         mEventBroadcaster.broadcastDebug("clearing VPN Proxy");
         Prefs.putUseVpn(false);
 
-        Intent intentVpn = new Intent(this, TorVpnService.class);
-        intentVpn.setAction("stop");
+        Intent intentVpn = new Intent("stop")
+                .setClassName(this, vpnServiceName);
         startService(intentVpn);
     }
 
@@ -326,8 +326,9 @@ public final class TorService extends Service implements TorServiceConstants, Or
     }
 
     private void startVPNService(Integer portSocks) {
-        Intent intentVpn = new Intent(this, TorVpnService.class)
-                .setAction("start").putExtra("torSocks", portSocks);
+        Intent intentVpn = new Intent("start")
+                .setClassName(this, vpnServiceName)
+                .putExtra("torSocks", portSocks);
         startService(intentVpn);
     }
 

@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import com.msopentech.thali.toronionproxy.TorSettings;
 import org.torproject.android.service.util.Prefs;
-import org.torproject.android.service.vpn.OrbotVpnManager;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -96,12 +95,12 @@ public class AndroidTorSettings implements TorSettings {
 
     @Override
     public String getProxySocks5Host() {
-        return OrbotVpnManager.sSocksProxyLocalhost;
+        return "127.0.0.1";
     }
 
     @Override
     public String getProxySocks5ServerPort() {
-        return String.valueOf(OrbotVpnManager.sSocksProxyServerPort);
+        return String.valueOf(prefs.getInt(OrbotConstants.SOCKS_PROXY_PORT, -1));
     }
 
     @Override

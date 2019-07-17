@@ -41,13 +41,15 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeoutException;
 
 import static org.torproject.android.service.vpn.VpnConstants.TOR_DNS_PORT_DEFAULT;
+import static org.torproject.android.service.vpn.VpnPrefs.SOCKS_PROXY_PORT;
 import static org.torproject.android.service.vpn.VpnUtils.getSharedPrefs;
 import static org.torproject.android.service.vpn.VpnUtils.killProcess;
 
 public class OrbotVpnManager implements Handler.Callback {
     private static final String TAG = "OrbotVpnService";
+	private final SharedPreferences prefs;
 
-    private PendingIntent mConfigureIntent;
+	private PendingIntent mConfigureIntent;
 
     private Thread mThreadVPN;
 
@@ -56,8 +58,7 @@ public class OrbotVpnManager implements Handler.Callback {
 
     private int mTorSocks = -1;
 
-    public static int sSocksProxyServerPort = -1;
-    public static String sSocksProxyLocalhost = null;
+    private int socksProxyServerPort = -1;
     private ProxyServer mSocksProxyServer;
 
     private final static int VPN_MTU = 1500;
@@ -87,7 +88,7 @@ public class OrbotVpnManager implements Handler.Callback {
 		filePdnsd.setExecutable(true);
 
 		Tun2Socks.init();
-
+		prefs = getSharedPrefs(mService.getApplicationContext());
 	}
    
     //public int onStartCommand(Intent intent, int flags, int startId) {
@@ -149,13 +150,12 @@ public class OrbotVpnManager implements Handler.Callback {
     		{
 
                 //generate the proxy port that the 
-                if (sSocksProxyServerPort == -1)
+                if (socksProxyServerPort == -1)
                 {
                 	try {
-						
-                		sSocksProxyLocalhost = "127.0.0.1";// InetAddress.getLocalHost().getHostAddress();
-	                	sSocksProxyServerPort = (int)((Math.random()*1000)+10000); 
-	                	
+
+	                	socksProxyServerPort = (int)((Math.random()*1000)+10000);
+						prefs.edit().putInt(SOCKS_PROXY_PORT, socksProxyServerPort).apply();
 					} catch (Exception e) {
 						Log.e(TAG,"Unable to access localhost",e);
 						throw new RuntimeException("Unable to access localhost: " + e);
@@ -174,7 +174,7 @@ public class OrbotVpnManager implements Handler.Callback {
 		    	{
 			        mSocksProxyServer = new ProxyServer(new ServerAuthenticatorNone(null, null));
 			        ProxyServer.setVpnService(mService);
-			        mSocksProxyServer.start(sSocksProxyServerPort, 5, InetAddress.getLocalHost());
+			        mSocksProxyServer.start(socksProxyServerPort, 5, InetAddress.getLocalHost());
 			        
 		    	}
 		    	catch (Exception e)
@@ -272,7 +272,7 @@ public class OrbotVpnManager implements Handler.Callback {
         	Tun2Socks.Stop();
         }
 
-        final int localDns = getSharedPrefs(this.mService.getApplicationContext()).getInt(VpnPrefs.PREFS_DNS_PORT, TOR_DNS_PORT_DEFAULT);
+        final int localDns = prefs.getInt(VpnPrefs.PREFS_DNS_PORT, TOR_DNS_PORT_DEFAULT);
         
     	mThreadVPN = new Thread ()
     	{
@@ -361,7 +361,7 @@ public class OrbotVpnManager implements Handler.Callback {
 	private void doLollipopAppRouting (Builder builder) throws NameNotFoundException
     {    
     	   
-        ArrayList<TorifiedApp> apps = TorifiedApp.getApps(mService, getSharedPrefs(mService.getApplicationContext()));
+        ArrayList<TorifiedApp> apps = TorifiedApp.getApps(mService, prefs);
     
         boolean perAppEnabled = false;
         
@@ -387,8 +387,7 @@ public class OrbotVpnManager implements Handler.Callback {
     	
     	if (!isRestart)
     	{
-	    	SharedPreferences prefs = getSharedPrefs(mService.getApplicationContext());
-	        prefs.edit().putBoolean("pref_vpn", false).commit();      
+	        prefs.edit().putBoolean("pref_vpn", false).commit();
 	    	stopVPN();	
     	}
     	

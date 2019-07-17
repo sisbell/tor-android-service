@@ -11,5 +11,6 @@ public interface VpnPrefs {
      */
     String PREF_TOR_SHARED_PREFS = "org.torproject.android_preferences";
 
+    String SOCKS_PROXY_PORT = "VPN_SOCKS_PROXY_PORT";
 
 }
