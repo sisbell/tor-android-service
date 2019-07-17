@@ -3,6 +3,7 @@ apply plugin: 'maven'
 
 buildscript {
     repositories {
+        mavenLocal()
         google()
         mavenCentral()
     }
@@ -16,6 +17,7 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenLocal()
         google()
         mavenCentral()
         maven { url "https://repo.spring.io/plugins-release" }
