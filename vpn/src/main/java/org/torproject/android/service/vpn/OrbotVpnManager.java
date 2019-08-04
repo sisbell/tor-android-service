@@ -338,7 +338,7 @@ public class OrbotVpnManager implements Handler.Callback {
 		        	isRestart = false;
 
 					//start PDNSD daemon pointing to actual DNS
-					startDNS("127.0.0.1",localDns);
+					startDNS(filePdnsd.getCanonicalPath(), "127.0.0.1",localDns);
 
 					Tun2Socks.Start(mInterface, VPN_MTU, virtualIP, virtualNetMask, localSocks , localDNS , localDnsTransparentProxy);
 
@@ -398,14 +398,14 @@ public class OrbotVpnManager implements Handler.Callback {
     }
 
 
-    private void startDNS (String dns, int port) throws IOException, TimeoutException
+    private void startDNS (String dnsPath, String dns, int port) throws IOException, TimeoutException
     {
 
 		File fileConf = makePdnsdConf(mService, dns, port,mService.getFilesDir());
     	
       //  ArrayList<String> customEnv = new ArrayList<String>();
 
-        String[] cmdString = {filePdnsd.getCanonicalPath(),"-c",fileConf.toString()};
+        String[] cmdString = {dnsPath,"-c",fileConf.toString()};
         ProcessBuilder pb = new ProcessBuilder(cmdString);
         pb.redirectErrorStream(true);
 		Process proc = pb.start();
