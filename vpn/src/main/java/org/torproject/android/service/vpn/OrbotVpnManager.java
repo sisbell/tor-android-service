@@ -44,6 +44,7 @@ import static org.torproject.android.service.vpn.VpnConstants.EXTRA_DNS_PORT;
 import static org.torproject.android.service.vpn.VpnConstants.LOCAL_ACTION_PORTS;
 import static org.torproject.android.service.vpn.VpnPrefs.SOCKS_PROXY_PORT;
 import static org.torproject.android.service.vpn.VpnUtils.getSharedPrefs;
+import static org.torproject.android.service.vpn.VpnUtils.killProcess;
 
 public final class OrbotVpnManager implements Handler.Callback {
     private static final String TAG = "OrbotVpnService";
@@ -115,10 +116,14 @@ public final class OrbotVpnManager implements Handler.Callback {
                 stopVPN();
             } else if (LOCAL_ACTION_PORTS.equals(action)) {
                 Log.d(TAG, "starting OrbotVPNService service!");
-                mTorSocks = intent.getIntExtra(EXTRA_SOCKS_PROXY_PORT, -1);
-                mTorDns = intent.getIntExtra(EXTRA_DNS_PORT, -1);
-                if (!mIsLollipop) {
-                    startSocksBypass();
+                int newTorSocks = intent.getIntExtra(EXTRA_SOCKS_PROXY_PORT,-1);
+                int newTorDns = intent.getIntExtra(EXTRA_DNS_PORT,-1);
+                if ((mTorSocks != newTorSocks || mTorDns != newTorDns)) {
+                    mTorSocks = newTorSocks;
+                    mTorDns = newTorDns;
+                    if (!mIsLollipop) {
+                        startSocksBypass();
+                    }
                 }
                 setupTun2Socks(builder);
             }
@@ -251,13 +256,18 @@ public final class OrbotVpnManager implements Handler.Callback {
     }
 
     private boolean stopDns() {
+        try {
+            killProcess(filePdnsd, "-1");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         File filePid = new File(mService.getFilesDir(), "pdnsd.pid");
         String pid = null;
         if (filePid.exists()) {
             try {
                 BufferedReader reader = new BufferedReader(new FileReader(filePid));
                 pid = reader.readLine().trim();
-                VpnUtils.killProcess(pid, "-9");
+                killProcess(pid, "-9");
                 filePid.delete();
                 return true;
 
