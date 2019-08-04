@@ -11,14 +11,14 @@ import java.io.InputStreamReader;
 import static java.lang.Runtime.getRuntime;
 import static org.torproject.android.service.vpn.VpnConstants.SHELL_CMD_PS;
 
-public class VpnUtils {
+public final class VpnUtils {
 
     public static SharedPreferences getSharedPrefs(Context context) {
         return context.getSharedPreferences(VpnPrefs.PREF_TOR_SHARED_PREFS,
                 Context.MODE_MULTI_PROCESS);
     }
 
-    public static int findProcessId(String command) throws IOException {
+    private static int findProcessId(String command) throws IOException {
         Process procPs = getRuntime().exec(SHELL_CMD_PS);
         BufferedReader reader = new BufferedReader(new InputStreamReader(procPs.getInputStream()));
 
@@ -41,11 +41,11 @@ public class VpnUtils {
         return -1;
     }
 
-    public static void killProcess(File fileProcBin) throws Exception {
+    static void killProcess(File fileProcBin) throws Exception {
         killProcess(fileProcBin, "-9"); // this is -KILL
     }
 
-    public static void killProcess(File fileProcBin, String signal) throws Exception {
+    static void killProcess(File fileProcBin, String signal) throws Exception {
         int procId = -1;
         int killAttempts = 0;
 
