@@ -8,5 +8,9 @@ public interface VpnConstants {
 
     int TOR_DNS_PORT_DEFAULT = 5400;
 
+    String LOCAL_ACTION_PORTS = "ports";
 
+    String EXTRA_DNS_PORT = "org.torproject.android.intent.extra.DNS_PORT";
+
+    String EXTRA_TRANS_PORT = "org.torproject.android.intent.extra.TRANS_PORT";
 }

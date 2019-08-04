@@ -8,13 +8,6 @@ import android.content.SharedPreferences;
 import org.torproject.android.service.OrbotConstants;
 import org.torproject.android.service.TorServiceConstants;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import static java.lang.Runtime.getRuntime;
-
 public class TorServiceUtils implements TorServiceConstants {
 
     public static SharedPreferences getSharedPrefs(Context context) {

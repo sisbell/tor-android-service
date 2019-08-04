@@ -2,6 +2,7 @@ package org.torproject.android.service.vpn;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import org.torproject.android.service.OrbotConstants;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,7 +15,7 @@ import static org.torproject.android.service.vpn.VpnConstants.SHELL_CMD_PS;
 public final class VpnUtils {
 
     public static SharedPreferences getSharedPrefs(Context context) {
-        return context.getSharedPreferences(VpnPrefs.PREF_TOR_SHARED_PREFS,
+        return context.getSharedPreferences(OrbotConstants.PREF_TOR_SHARED_PREFS,
                 Context.MODE_MULTI_PROCESS);
     }
 
@@ -78,6 +79,21 @@ public final class VpnUtils {
 
             if (killAttempts > 4)
                 throw new Exception("Cannot kill: " + fileProcBin.getAbsolutePath());
+        }
+    }
+
+    static void killProcess(String pidString, String signal) {
+        try {
+            getRuntime().exec("toolbox kill " + signal + " " + pidString);
+        } catch (IOException ioe) {
+        }
+        try {
+            getRuntime().exec("busybox kill " + signal + " " + pidString);
+        } catch (IOException ioe) {
+        }
+        try {
+            getRuntime().exec("kill " + signal + " " + pidString);
+        } catch (IOException ioe) {
         }
     }
 }

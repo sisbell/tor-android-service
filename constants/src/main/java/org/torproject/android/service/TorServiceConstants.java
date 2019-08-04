@@ -4,7 +4,6 @@
 
 package org.torproject.android.service;
 
-import android.content.Intent;
 
 public interface TorServiceConstants {
 
@@ -27,7 +26,7 @@ public interface TorServiceConstants {
      */
     String ACTION_START = "org.torproject.android.intent.action.START";
     /**
-     * {@link Intent} send by Orbot with {@code ON/OFF/STARTING/STOPPING} status
+     * send by Orbot with {@code ON/OFF/STARTING/STOPPING} status
      */
     String ACTION_STATUS = "org.torproject.android.intent.action.STATUS";
     /**
@@ -37,8 +36,8 @@ public interface TorServiceConstants {
      */
     String EXTRA_STATUS = "org.torproject.android.intent.extra.STATUS";
     /**
-     * A {@link String} {@code packageName} for Orbot to direct its status reply
-     * to, used in {@link #ACTION_START} {@link Intent}s sent to Orbot
+     * A {String} {@code packageName} for Orbot to direct its status reply
+     * to, used in {@link #ACTION_START} Intents sent to Orbot
      */
     String EXTRA_PACKAGE_NAME = "org.torproject.android.intent.extra.PACKAGE_NAME";
     /**
@@ -71,8 +70,8 @@ public interface TorServiceConstants {
 
     /**
      * The user has disabled the ability for background starts triggered by
-     * apps. Fallback to the old {@link Intent} action that brings up Orbot:
-     * {@link org.torproject.android.OrbotMainActivity#INTENT_ACTION_REQUEST_START_TOR}
+     * apps. Fallback to the old Intent action that brings up Orbot:
+     * {org.torproject.android.OrbotMainActivity#INTENT_ACTION_REQUEST_START_TOR}
      */
     String STATUS_STARTS_DISABLED = "STARTS_DISABLED";
 

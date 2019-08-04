@@ -23,6 +23,7 @@ android {
 
 dependencies {
     compileOnly fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    implementation project(':constants')
     implementation project(':vpn')
     implementation 'net.freehaven.tor.control:jtorctl:0.2'
     implementation "com.android.support:appcompat-v7:${appcompatVersion}"

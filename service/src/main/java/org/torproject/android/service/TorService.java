@@ -327,8 +327,7 @@ public final class TorService extends Service implements TorServiceConstants, Or
 
     private void startVPNService(Integer portSocks) {
         Intent intentVpn = new Intent("start")
-                .setClassName(this, vpnServiceName)
-                .putExtra("torSocks", portSocks);
+                .setClassName(this, vpnServiceName);
         startService(intentVpn);
     }
 

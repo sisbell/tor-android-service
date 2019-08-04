@@ -30,6 +30,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':constants')
     implementation 'info.pluggabletransports.aptds:jsocksAndroid:1.0.4'
     implementation "com.android.support:appcompat-v7:${appcompatVersion}"
     testImplementation 'junit:junit:4.12'

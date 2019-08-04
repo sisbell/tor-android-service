@@ -6,11 +6,6 @@ public interface VpnPrefs {
 
     String PREFS_KEY_TORIFIED = "PrefTord";
 
-    /**
-     * Keep this in sync with the one in TorServiceUtils
-     */
-    String PREF_TOR_SHARED_PREFS = "org.torproject.android_preferences";
-
     String SOCKS_PROXY_PORT = "VPN_SOCKS_PROXY_PORT";
 
 }
