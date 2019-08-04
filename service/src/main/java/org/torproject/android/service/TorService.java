@@ -409,8 +409,8 @@ public final class TorService extends Service implements TorServiceConstants, Or
             if (action != null) {
                 switch (action) {
                     case ACTION_START:
-                        mEventBroadcaster.replyWithStatus(mIntent);
                         startTor();
+                        mEventBroadcaster.replyWithStatus(mIntent);
                         break;
                     case ACTION_STATUS:
                         mEventBroadcaster.replyWithStatus(mIntent);
