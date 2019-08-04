@@ -240,7 +240,7 @@ public final class OrbotVpnManager implements Handler.Callback {
                     isRestart = false;
 
                     //start PDNSD daemon pointing to actual DNS
-                    startDNS(filePdnsd.getCanonicalPath(), localhost, mTorDns, "0.0.0.0", pdnsdPort);
+                    startDNS(filePdnsd.getCanonicalPath(), localhost, mTorDns, virtualGateway, pdnsdPort);
                     Tun2Socks.start(mInterface, VPN_MTU, virtualIP, virtualNetMask, localSocks, localDNS, localDnsTransparentProxy);
                 } catch (Exception e) {
                     Log.d(TAG, "tun2Socks has stopped", e);
