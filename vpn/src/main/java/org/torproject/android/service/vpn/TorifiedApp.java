@@ -1,5 +1,6 @@
 package org.torproject.android.service.vpn;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -39,7 +40,7 @@ public final class TorifiedApp implements Comparable {
                 PackageInfo pInfo = pMgr.getPackageInfo(aInfo.packageName, PackageManager.GET_PERMISSIONS);
                 if (pInfo != null && pInfo.requestedPermissions != null) {
                     for (String permInfo : pInfo.requestedPermissions) {
-                        if (permInfo.equals("android.permission.INTERNET")) {
+                        if (permInfo.equals(Manifest.permission.INTERNET)) {
                             app.setUsesInternet(true);
                         }
                     }
