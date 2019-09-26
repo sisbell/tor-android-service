@@ -31,7 +31,7 @@ import java.util.concurrent.Executors;
 
 public final class TorService extends Service implements TorServiceConstants, OrbotConstants {
 
-    public final static String TOR_VERSION = "0.3.5.8-rc-openssl1.0.2p";
+    public final static String TOR_VERSION = "0.4.1.5-rc-openssl1.0.2p";
     private static final int NOTIFY_ID = 1;
     private static final int ERROR_NOTIFY_ID = 3;
     private final static String NOTIFICATION_CHANNEL_ID = "orbot_channel_1";
