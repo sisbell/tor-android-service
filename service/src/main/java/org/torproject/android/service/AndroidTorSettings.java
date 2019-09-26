@@ -218,4 +218,9 @@ public class AndroidTorSettings implements TorSettings {
     public boolean useSocks5() {
         return Prefs.useVpn() && Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP;
     }
+
+    @Override
+    public boolean hasDormantCanceledByStartup() {
+        return true;
+    }
 }
