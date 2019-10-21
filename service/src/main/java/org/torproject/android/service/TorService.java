@@ -16,6 +16,7 @@ import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.Log;
 import com.msopentech.thali.android.toronionproxy.AndroidOnionProxyManager;
+import com.msopentech.thali.toronionproxy.BridgeType;
 import com.msopentech.thali.toronionproxy.TorConfig;
 import com.msopentech.thali.toronionproxy.TorConfigBuilder;
 import com.msopentech.thali.toronionproxy.TorInstaller;
@@ -26,6 +27,8 @@ import org.torproject.android.service.vpn.TorVpnService;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -371,7 +374,8 @@ public final class TorService extends Service implements TorServiceConstants, Or
             File pluggableTransport = new File(nativeDir, "libObfs4proxy.so");
             if(!pluggableTransport.canExecute()) pluggableTransport.setExecutable(true);
 
-            builder.configurePluggableTransportsFromSettings(pluggableTransport);
+            List<BridgeType> bridgeTypes = onionProxyManager.getContext().getSettings().getBridgeTypes();
+            builder.configurePluggableTransports(pluggableTransport, bridgeTypes);
             mDataService.updateConfigBuilder(builder);
             onionProxyManager.getTorInstaller().updateTorConfigCustom
                     (builder.asString());

@@ -3,13 +3,12 @@ package org.torproject.android.service;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
+import com.msopentech.thali.toronionproxy.BridgeType;
 import com.msopentech.thali.toronionproxy.TorSettings;
 import org.torproject.android.service.util.Prefs;
 import org.torproject.android.service.vpn.OrbotVpnManager;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.torproject.android.service.TorServiceConstants.HTTP_PROXY_PORT_DEFAULT;
@@ -46,6 +45,11 @@ public class AndroidTorSettings implements TorSettings {
     }
 
     @Override
+    public List<String> getCustomBridges() {
+        return Prefs.getCustomBridges();
+    }
+
+    @Override
     public String getCustomTorrc() {
         return prefs.getString("pref_custom_torrc", "");
     }
@@ -71,12 +75,17 @@ public class AndroidTorSettings implements TorSettings {
     }
 
     @Override
-    public List<String> getListOfSupportedBridges() {
-        try {
-            return Arrays.asList(new String(Prefs.getBridgesList().getBytes("ISO-8859-1")).split(","));
-        } catch (UnsupportedEncodingException e) {
-            return new ArrayList<>();
+    public List<BridgeType> getBridgeTypes() {
+        List<BridgeType> results = new ArrayList<>();
+        for(String bridgeType : Prefs.getBridgeTypes()) {
+            try {
+                BridgeType type = BridgeType.valueOf(bridgeType.toUpperCase());
+                results.add(type);
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();//TODO: Log
+            }
         }
+        return results;
     }
 
     @Override
@@ -219,8 +228,4 @@ public class AndroidTorSettings implements TorSettings {
         return Prefs.useVpn() && Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP;
     }
 
-    @Override
-    public boolean hasDormantCanceledByStartup() {
-        return true;
-    }
 }

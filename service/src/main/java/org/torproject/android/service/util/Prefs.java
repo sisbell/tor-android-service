@@ -3,13 +3,20 @@ package org.torproject.android.service.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import com.msopentech.thali.toronionproxy.BridgeType;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 public class Prefs {
 
     private final static String PREF_BRIDGES_ENABLED = "pref_bridges_enabled";
     private final static String PREF_BRIDGES_LIST = "pref_bridges_list";
+    private final static String PREF_CUSTOM_BRIDGES = "pref_custom_bridges";
+    private final static String PREF_BRIDGE_TYPES = "pref_bridge_types";
+
     private final static String PREF_DEFAULT_LOCALE = "pref_default_locale";
     private final static String PREF_ENABLE_LOGGING = "pref_enable_logging";
     private final static String PREF_EXPANDED_NOTIFICATIONS = "pref_expanded_notifications";
@@ -59,6 +66,55 @@ public class Prefs {
 
     public static void setBridgesList(String value) {
         putString(PREF_BRIDGES_LIST, value);
+    }
+
+    /**
+     * Set a list of bridge types to be used. These will be used to pull bridges from the bridges.txt file
+     */
+    public static void setBridgeTypes(List<String> bridgeTypes) {
+        if(bridgeTypes == null || bridgeTypes.isEmpty()) {
+            putString(PREF_BRIDGE_TYPES, null);
+        } else {
+            putString(PREF_BRIDGE_TYPES, join(bridgeTypes));
+        }
+    }
+
+    public static List<String> getBridgeTypes() {
+        String bridgeTypes = prefs.getString(PREF_BRIDGE_TYPES, null);
+        if(bridgeTypes == null || bridgeTypes.isEmpty()) {
+            BridgeType defaultBridgeType = (Locale.getDefault().getLanguage().equals("fa")) ? BridgeType.MEEK_LITE : BridgeType.OBFS4;
+            return Collections.singletonList(defaultBridgeType.name().toLowerCase());
+        }
+        return Arrays.asList(bridgeTypes.split("[|]"));
+    }
+
+    /**
+     * These entries may be type-specified like:
+     *
+     * <code>
+     *  obfs3 169.229.59.74:31493 AF9F66B7B04F8FF6F32D455F05135250A16543C9
+     * </code>
+     *
+     * Or it may just be a custom entry like
+     *
+     * <code>
+     *    69.163.45.129:443 9F090DE98CA6F67DEEB1F87EFE7C1BFD884E6E2F
+     * </code>
+     */
+    public static void setCustomBridges(List<String> bridges) {
+        if(bridges == null || bridges.isEmpty()) {
+            putString(PREF_CUSTOM_BRIDGES, null);
+        } else {
+            putString(PREF_CUSTOM_BRIDGES, join(bridges));
+        }
+    }
+
+    public static List<String> getCustomBridges() {
+        String customBridges =  prefs.getString(PREF_CUSTOM_BRIDGES, null);
+        if(customBridges == null || customBridges.isEmpty()) {
+            return Collections.emptyList();
+        }
+        return Arrays.asList(customBridges.split("[|]"));
     }
 
     public static String getDefaultLocale() {
@@ -141,5 +197,16 @@ public class Prefs {
     public static void setExitNodes (String exits)
     {
     	putString(PREF_EXIT_NODES,exits);
+    }
+
+    private static String join(List<String> list) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            sb.append(list.get(i));
+            if (i != list.size() - 1) {
+                sb.append("|");
+            }
+        }
+        return sb.toString();
     }
 }
